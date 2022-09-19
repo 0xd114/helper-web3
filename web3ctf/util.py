@@ -23,11 +23,12 @@ def str_conv(st: str) -> str:
 
 
 def hex_conv(hx: str) -> typing.Dict[str, typing.Any]:
-    
+
     return {
         'uint256': Web3.toInt(hexstr=hx),
         'uint8': Web3.toInt(hexstr=hx) % 256
     }
+
 
 '''return sha3 / keccak of abi.encodePacked values
 see: https://web3py.readthedocs.io/en/stable/web3.main.html?highlight=keccak#web3.Web3.solidityKeccak'''
@@ -49,8 +50,7 @@ def sha3(types: list[str], values: list[typing.Any]) -> typing.Dict[str, typing.
     ret = Web3.solidityKeccak(types, values)
     
     return {
-        'hex': ret.hex(), 
-        'bytes32': binascii.unhexlify(ret.hex()[2:])
+        'hex': ret.hex(),
     }
 
 
@@ -75,6 +75,7 @@ def describe_tx(tx_id: str, provider: str = 'ropsten') -> typing.Dict[str, typin
         'to': res['to'],
         'block_number': res['blockNumber'],
     }
+
 
 '''describe important block properties'''
 def describe_block(blk_id: str, provider: str = 'ropsten') -> typing.Dict[str, typing.Any]:
