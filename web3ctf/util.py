@@ -61,7 +61,6 @@ def get_storage(addr: str,
 
     res = providers[provider].eth.get_storage_at(addr, slot_no)
     return {
-        'int': Web3.toInt(res),
         'hex': res.hex()
     }
 
